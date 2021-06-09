@@ -9,6 +9,7 @@ namespace HeistTwo
         public int SkillLevel { get; set; }
 
         public int PercentageCut { get; set; }
+        public string Speciality { get; set; }
 
         public void PerformSkill(Bank Bank)
         {

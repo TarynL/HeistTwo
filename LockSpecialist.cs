@@ -10,6 +10,8 @@ namespace HeistTwo
 
         public int PercentageCut { get; set; }
 
+        public string Speciality { get; set; }
+
         public void PerformSkill(Bank Bank)
         {
             int BankSecurityScore = Bank.AlarmScore - SkillLevel;

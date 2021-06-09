@@ -82,8 +82,12 @@ namespace HeistTwo
                     Console.Write("What is their cut? (1-100) ");
                     int cut = Int32.Parse(Console.ReadLine());
                     Console.WriteLine("---------------");
+                    if (speciality != 1 && speciality != 2 && speciality != 3)
+                    {
+                        Console.WriteLine("Speciality was not needed. Crew member denied.");
 
-                    if (speciality == 1)
+                    }
+                    else if (speciality == 1)
                     {
                         Hacker hacker = new Hacker()
                         {
@@ -113,15 +117,66 @@ namespace HeistTwo
                         };
                         rolodex.Add(lockSpecialist);
                     }
-                    else
-                    {
-                        Console.WriteLine("The crew member is not accepted.");
-                        return;
-                    }
+
                     CrewSelection();
                 }
 
             }
+
+            Random r = new Random();
+            Bank bank = new Bank()
+            {
+                AlarmScore = r.Next(0, 100),
+                VaultScore = r.Next(0, 100),
+                SecurityGuardScore = r.Next(0, 100),
+                CashOnHand = r.Next(50000, 1000000)
+            };
+
+            Console.WriteLine("");
+            Console.WriteLine("REACON REPORT");
+            Console.WriteLine("");
+
+            if (bank.AlarmScore > bank.VaultScore && bank.VaultScore > bank.SecurityGuardScore)
+            {
+                Console.WriteLine("\nMost Secure: Alarm \nLeast Secure: Guard");
+            }
+            else if (bank.AlarmScore > bank.SecurityGuardScore && bank.SecurityGuardScore > bank.VaultScore)
+            {
+                Console.WriteLine("\nMost Secure: Alarm \nLeast Secure: Vault");
+            }
+            else if (bank.VaultScore > bank.AlarmScore && bank.AlarmScore > bank.SecurityGuardScore)
+            {
+                Console.WriteLine("\nMost Secure: Vault \nLeast Secure: Guard");
+            }
+            else if (bank.VaultScore > bank.SecurityGuardScore && bank.SecurityGuardScore > bank.AlarmScore)
+            {
+                Console.WriteLine("\nMost Secure: Vault \nLeast Secure: Alarm");
+            }
+            else if (bank.SecurityGuardScore > bank.VaultScore && bank.VaultScore > bank.AlarmScore)
+            {
+                Console.WriteLine("\nMost Secure: Guard  \nLeast Secure: Alarm");
+
+            }
+            else
+            {
+                Console.WriteLine("\nMost Secure: Guard  \nLeast Secure: Vault");
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("CREW MEMBERS REPORT");
+            Console.WriteLine("");
+            List<IRobber> crew = new List<IRobber>();
+
+            foreach (IRobber criminal in crew)
+            {
+                Console.WriteLine($@"
+            Name: {criminal.Name}
+            Speciality: {criminal.Speciality}
+            Skill Level: {criminal.SkillLevel}
+            Cut: {criminal.PercentageCut}
+             ");
+            }
+
 
 
         }
