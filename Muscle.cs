@@ -14,11 +14,11 @@ namespace HeistTwo
         {
             int BankSecurityScore = Bank.AlarmScore - SkillLevel;
 
-            Console.WriteLine($"{Name} is using their muscle to break into the building. Decreased security by {SkillLevel} points.");
+            Console.WriteLine($"{Name} is using their big, strong muscles to take on the guards. Decreased security by {SkillLevel} points.");
 
             if (BankSecurityScore <= 0)
             {
-                Console.WriteLine($"{Name} has disabled the alarm system!");
+                Console.WriteLine($"{Name} has disarmed the guards!");
             }
         }
     }

@@ -14,11 +14,11 @@ namespace HeistTwo
         {
             int BankSecurityScore = Bank.AlarmScore - SkillLevel;
 
-            Console.WriteLine($"{Name} is picking the lock to the side door. Decreased security by {SkillLevel} points.");
+            Console.WriteLine($"{Name} is picking the lock to the vault. Decreased security by {SkillLevel} points.");
 
             if (BankSecurityScore <= 0)
             {
-                Console.WriteLine($"{Name} has disabled the alarm system!");
+                Console.WriteLine($"{Name} has cracked the vault!");
             }
         }
     }
